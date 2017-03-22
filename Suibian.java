@@ -12,7 +12,7 @@ public class Suibian implements ActionListener
 	JButton buttonStart=new JButton("Play");
 	JButton buttonStop=new JButton("Stop");
 
-	
+	boolean play;//help to judge the functon of button
 
 public  Suibian()
 {
@@ -29,14 +29,6 @@ public  Suibian()
 }
 
 
-public void actionPerformed(ActionEvent e)
-{
-
-  
-}
-
-
-
 public JComponent getB()
 {
 	return b;
@@ -46,7 +38,22 @@ public JComponent getC()
 	return c;
 }
 
-
+public void actionPerformed(ActionEvent e)//judge the function of button 
+{
+  if (e.getSource()==buttonStart)
+  {
+	  play=true;
+  }
+  if (e.getSource()==buttonStop)
+  {
+	  play=false;
+  }
+}
+	
+	public boolean inside()
+{
+	return play;
+}
 	
 	public static void main(String[] args)
 	{
@@ -57,27 +64,28 @@ public JComponent getC()
 		
 		a.setTitle("Racer");
 		a.setSize(r.SCREEN_WIDTH,r.SCREEN_HEIGHT);
-		a.setVisible(true);
-		a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //close when click X
+		a.setVisible(true);//can see the game clearly 
+		a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //close when click X,then back to the commond prompt
 		
 		
 		a.setLayout(new BorderLayout());
 		a.add(s.getB(),BorderLayout.NORTH);
 		a.add(r.getPanel(),BorderLayout.CENTER);
-		a.add(s.getC(),BorderLayout.SOUTH);
+		a.add(s.getC(),BorderLayout.SOUTH);//these three stapes are helpful for setting button
+	
 		
 		
 		
 		
 		
-		
-		
-		r.start();
-		while(r.isPlaying()){
+		r.start();//game starts
+		while(r.isPlaying())
+		{
 			
-			r.update();
+			r.update();//move if the game starts
 		    
-		}
+		}   
+		
 			
 		
 		
